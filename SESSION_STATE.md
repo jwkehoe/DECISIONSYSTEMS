@@ -2,41 +2,49 @@
 
 ## Current Objective
 
-Move the repository from continuity scaffolding into the first substantive Phase 1 documentation and record artifacts.
+Expand the CLI beyond the first archaeology slice after establishing the Phase 1 checkpoint baseline.
 ## Current Branch / Commit
 
-main @ unknown
+main @ 0cfd7e9
 ## Active Files
 
-- tools/bootstrap_decision_system.sh
-- tools/Decision_System_Setup_Documentation.md
 - TODO.md
 - SESSION_STATE.md
 - PROJECT_STATUS.md
 - FLIGHT_RECORDER.md
 - CHANGELOG.md
-- tools/session/open_session.sh
-- tools/session/close_session.sh
-- tools/validate_repository.sh
-- tools/repository_health_check.sh
+- src/dsw/repo_scan.py
+- src/dsw/prd.py
+- src/dsw/cli.py
+- governance/Decision_Systems_Workbench-Phase_2_LLM_Mega_Matrix.md
+- TODO.md
+- SESSION_STATE.md
+- PROJECT_STATUS.md
+- FLIGHT_RECORDER.md
+- CHANGELOG.md
 ## Decisions Made
 
 - Use Bash-based repository continuity utilities as the canonical workflow entry points.
 - Preserve the lowercase repository layout as the canonical structure and reconcile live docs to it.
 - Require the bootstrap script to seed the same control files and workflow scripts that live validation expects.
+- Treat the first real docs set as the minimum viable Phase 1 explanatory corpus before creating record artifacts.
+- Treat the first record set as the baseline evidence layer before moving into tests and implementation.
+- Use a single shell smoke test as the minimum viable protection layer for repository continuity before beginning CLI implementation.
+- Make the first executable CLI slice `repo scan -> reconstructed PRD markdown` rather than waiting for a larger framework.
+- Checkpoint Phase 1 baselines in Git before widening implementation scope.
 ## Open Questions
 
-- What is the minimum substantive documentation set needed to move Phase 1 beyond placeholder status?
+- Should the next thin slice be `models scan` or a richer archaeology artifact such as project DNA?
 ## Known Constraints
 
 - Do not delete or overwrite user-created content without explicit approval.
 - Avoid destructive cleanup while the repository is still stabilizing.
 ## Next Safe Action
 
-Create the first real Phase 1 documents and records so the repo stops presenting placeholder-only architecture, operations, requirements, and decisions surfaces.
+Choose the next thin implementation slice, then push the completed Phase 1 checkpoint upstream.
 ## Restart Point
 
-Run `./tools/session/open_session.sh`, then work `REPO-002` and `REPO-003` from `TODO.md`.
+Run `./tools/session/open_session.sh`, then execute `REPO-007` from `TODO.md`.
 ## Last Updated
 
-2026-06-28 13:40 CDT
+2026-06-28 14:33 CDT

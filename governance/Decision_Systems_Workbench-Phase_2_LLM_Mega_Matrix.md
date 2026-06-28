@@ -83,9 +83,15 @@ Phase 2 builds the complete model catalog, scoring system, benchmark methodology
 
 The following seed table is derived from the current local model tree. Some values should be validated by the scanner because filenames and directory names are imperfect evidence.
 
+Current local note:
+
+- The archaeology-primary `qwen3-next-80b-a3b` currently maps to the local path `/Users/meat/LLM_Models/models/adam-fleet/Qwen3-Next-80B-A3B-Instruct-REAM-mlx-3bit`.
+- This is the current best local match for the `Qwen3-Next-80B` role even though it is a 3-bit REAM MLX build rather than the earlier 4-bit placeholder label in the seed inventory.
+- A separate coder-tuned `Qwen3-Coder-Next-REAM` build is optional for implementation-heavy work, but it is not required for repository archaeology when the instruct archaeology-primary is present.
+
 | Model ID | Model / Directory Name | Family | Approx Class | Modality | Runtime Clue | Initial Role |
 |---|---|---:|---|---|---|---|
-| qwen3-next-80b-a3b | Qwen3-Next-80B-A3B-Instruct-4bit | Qwen | 80B MoE/A3B | Text | 4-bit | Chief Architect / Heavy Reasoning |
+| qwen3-next-80b-a3b | Qwen3-Next-80B-A3B-Instruct-REAM-mlx-3bit | Qwen | 80B MoE/A3B | Text | MLX 3-bit REAM | Chief Architect / Heavy Reasoning |
 | qwen3-6-35b-a3b | Qwen3.6-35B-A3B-MLX-4bit | Qwen | 35B MoE/A3B | Text | MLX 4-bit | Senior Architect / General Reasoning |
 | qwen3-6-27b-ud | Qwen3.6-27B-UD-MLX-4bit | Qwen | 27B | Text | MLX 4-bit | Daily Driver / Engineering |
 | deepseek-r1-32b | DeepSeek-R1-Distill-Qwen-32B-4bit | DeepSeek/Qwen | 32B | Text | 4-bit | Reasoning Critic / Debug Reviewer |
@@ -207,6 +213,12 @@ Every model receives values across the following dimensions.
 | "Classify task" | router | senior_engineer | none |
 | "Write LinkedIn/article" | technical_writer | reasoning_critic | voice_editor |
 | "Find hallucination" | reasoning_critic | chief_architect | evidence_validator |
+
+Operational note:
+
+- If the local `Qwen3-Next-80B-A3B-Instruct-REAM-mlx-3bit` build is available, prefer it over smaller general models for reverse engineering and intent recovery.
+- Use coder-specialized models such as `Qwen2.5-Coder-7B` only after archaeology when the task shifts from understanding to implementation.
+- Treat `Qwen3-Coder-Next-REAM` as an optional future code-role addition, not as a replacement for the archaeology-primary instruct build.
 
 ---
 
@@ -650,6 +662,12 @@ This benchmark suite is called **John Bench**.
 | technical_writing | magnum-v3-34b | qwen3-6-27b-ud | llama-3-3-70b |
 | json_generation | qwen3-6-27b-ud | deepseek-r1-1-5b | qwen3-6-27b-ud |
 | fast_classification | deepseek-r1-1-5b | llama-3-1-8b | none |
+
+Current local routing interpretation:
+
+- `repo_archaeology` primary resolves to `/Users/meat/LLM_Models/models/adam-fleet/Qwen3-Next-80B-A3B-Instruct-REAM-mlx-3bit`.
+- If that model is unavailable or unstable, degrade to `qwen3-6-35b-a3b` as the practical archaeology fallback.
+- Do not switch the archaeology primary to a coder-tuned variant unless benchmark evidence later shows better intent-recovery performance than the instruct build.
 | screenshot_analysis | glm-4-6v-flash | qwen2-5-vl-32b | qwen3-6-27b-ud |
 | diagram_analysis | qwen2-5-vl-32b | pixtral-12b | qwen3-6-27b-ud |
 | rag_embedding | bge-m3 | qwen3-embedding-4b | none |
